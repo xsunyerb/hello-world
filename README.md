@@ -30,14 +30,19 @@ B. If username’s birthday is today:
     “message”: “Hello, <username>! Happy birthday!” 
 }
 ```
-
-## Execute 
+## Run
+### Execute locally with dotnet
 ```
-dotnet run --project HelloWorldApi
+dotnet run --project HelloWorldApi --urls http://localhost:5000
 ```
-Will run the API at http://localhost:5250/
-
-## Run tests
+### Execute locally with docker
+```
+docker build -t hello-world-api -f HelloWorldApi/Dockerfile .
+docker create --name hello-world-runner hello-world-api
+docker start hello-world-runner
+docker ps -a
+```
+### Run tests
 ```
 dotnet test
 ```
