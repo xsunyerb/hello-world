@@ -3,16 +3,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<UserDb>(opt => opt.UseInMemoryDatabase("Users"));
+builder.Services.AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("Users"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
-app.MapGet("/hello", async (UserDb db) =>
+app.MapGet("/hello", async (UserDbContext db) =>
 {
     return await db.Users.ToListAsync();
 });
 
-app.MapGet("/hello/{username}", async (string username, UserDb db) =>
+app.MapGet("/hello/{username}", async (string username, UserDbContext db) =>
 {
     User? user = await db.Users.FindAsync(username);
     if (user == null)
@@ -22,12 +22,12 @@ app.MapGet("/hello/{username}", async (string username, UserDb db) =>
     else
     {
         HelloWorldService helloWorldService = new HelloWorldService();
-        HelloMessage message = helloWorldService.Hello(user);
+        HelloMessageDto message = helloWorldService.Hello(user);
         return Results.Ok(message);
     }
 });
 
-app.MapPut("/hello/{username}", async (string username, string dateOfBirth, UserDb db) =>
+app.MapPut("/hello/{username}", async (string username, string dateOfBirth, UserDbContext db) =>
 {
     DateTime? birthDayDate = null;
     try

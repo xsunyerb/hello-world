@@ -1,8 +1,8 @@
 ﻿namespace HelloWorldApi
 {
-    public class HelloMessage
+    public class HelloMessageDto
     {
-        public HelloMessage(string message) { 
+        public HelloMessageDto(string message) { 
             this.Message = message;
         }
         public string Message { get; set; }

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HelloWorldApi
 {
-    class UserDb : DbContext
+    class UserDbContext : DbContext
     {
-        public UserDb(DbContextOptions<UserDb> options)
+        public UserDbContext(DbContextOptions<UserDbContext> options)
             : base(options) { }
 
         public DbSet<User> Users => Set<User>();

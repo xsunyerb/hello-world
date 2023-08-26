@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldService.Tests", "HelloWorldService.Tests\HelloWorldService.Tests.csproj", "{124E6763-03AE-4DF6-B97A-F84153806F57}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldApi.Tests", "HelloWorldApi.Tests\HelloWorldApi.Tests.csproj", "{124E6763-03AE-4DF6-B97A-F84153806F57}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWorldApi", "HelloWorldApi\HelloWorldApi.csproj", "{164ED241-B24F-40E1-9C5A-661E617F4870}"
 EndProject
