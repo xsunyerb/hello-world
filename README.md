@@ -43,7 +43,7 @@ cd ./src
 dotnet run --project HelloWorldApi --urls http://localhost:5000
 ```
 ### Execute locally with docker
-#### Create image
+#### Build image
 ```
 cd ./src/HelloWorldApi
 docker build -t hello-world-api .
