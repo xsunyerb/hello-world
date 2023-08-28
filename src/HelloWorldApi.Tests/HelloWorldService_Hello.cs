@@ -1,25 +1,38 @@
-// using Xunit;
-// using HelloWorldApi;
+using Xunit;
+using HelloWorldApi;
 
-// namespace HelloWorldApi.Tests
+namespace HelloWorldApi.Tests 
+{
+    public class HelloWorldService_Hello
+    {
+        private readonly HelloWorldService _helloWorldService;
 
-// public class HelloWorldService_Hello
-// {
-//     private readonly HelloWorldService _helloWorldService;
+        public HelloWorldService_Hello()
+        {
+            _helloWorldService = new HelloWorldService();
+        }
 
-//     public HelloWorldService_Hello()
-//     {
-//         _helloWorldService = new HelloWorldService();
-//     }
+        [Theory]
+        [InlineData("Joe")]
+        public void Hello_UsernameIsValid_ReturnHappyBirthday(string userName)
+        {
+            User testUser = new User(userName, DateTime.Today.AddYears(-1));
+            HelloMessageDto result = _helloWorldService.Hello(testUser);
 
-//     [Theory]
-//     [InlineData(new User("Joe", new DateTime("2000-01-01")))]
-//     // [InlineData("user2")]
-//     // [InlineData("user3")]
-//     public void Hello_UsernameIsValid_ReturnHappyBirthday(User user)
-//     {
-//         HelloMessage result = _helloWorldService.Hello(user);
+            Assert.Equal($"Hello, {userName}! Happy birthday!", result.Message);
+        }
 
-//         Assert.Equal($"Hello, {user.Username}! Happy birthday!", result.Message);
-//     }
-// }
+        [Theory]
+        [InlineData("Joe")]
+        public void Hello_UsernameIsValid_ReturnYourBirthdayIsInXDays(string userName)
+        {
+            DateTime birthday = DateTime.Now.AddYears(-1).AddDays(-10);
+            int daysLeft = (birthday.AddYears(2) - DateTime.Now).Days;
+            
+            User testUser = new User(userName, birthday);
+            HelloMessageDto result = _helloWorldService.Hello(testUser);
+
+            Assert.Equal($"Hello, {userName}! Your birthday is in {daysLeft} day(s)", result.Message);
+        }        
+    }
+}

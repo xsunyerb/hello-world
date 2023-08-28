@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "5ce2531e-136f-47ee-8af3-573a8b98deca",
+		"name": "hello-world",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29358307"
+	},
+	"item": [
+		{
+			"name": "hello/username_ok",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/username?dateOfBirth=2000-08-28",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"username"
+					],
+					"query": [
+						{
+							"key": "dateOfBirth",
+							"value": "2000-08-28"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hello/username_ok Copy",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/username?dateOfBirth=1990-01-01",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"username"
+					],
+					"query": [
+						{
+							"key": "dateOfBirth",
+							"value": "1990-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hello",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hello/username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/username",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"username"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hello/badUserName",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/badUserName1?dateOfBirth=2022-08-26",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"badUserName1"
+					],
+					"query": [
+						{
+							"key": "dateOfBirth",
+							"value": "2022-08-26"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "hello/badDateUser_today",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/badDateUser?dateOfBirth={{currentdate}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"badDateUser"
+					],
+					"query": [
+						{
+							"key": "dateOfBirth",
+							"value": "{{currentdate}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/hello/badDateUser_format",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hello/user?dateOfBirth=22-08-26",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hello",
+						"user"
+					],
+					"query": [
+						{
+							"key": "dateOfBirth",
+							"value": "22-08-26"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var moment = require('moment');",
+					"pm.environment.set('currentdate', moment().format((\"YYYY-MM-DD\")));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
