@@ -37,20 +37,23 @@ B. If username’s birthday is today:
 Github action file in /.gthub/workflows folder.
 
 ## Run
-### Execute locally with dotnet
+### Execute locally with dotnet cli
 ```
+cd ./src
 dotnet run --project HelloWorldApi --urls http://localhost:5000
 ```
 ### Execute locally with docker
+#### Create image
 ```
-docker build -t hello-world-api -f HelloWorldApi/Dockerfile .
-docker create --name hello-world-runner hello-world-api
-docker start hello-world-runner
-docker ps -a
+cd ./src/HelloWorldApi
+docker build -t hello-world-api .
+```
+#### Start server
+```
+docker run -p 5000:5000 hello-world-api 
 ```
 ## Tests
 - Unit tests execution
-
 ```
 dotnet test
 ```
